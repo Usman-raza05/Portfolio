@@ -11,7 +11,7 @@ export const profile = {
   linkedin: null, // add the real URL later; the link stays hidden until then
   about: {
     paragraphs: [
-      "I'm Usman Raza, a second-year BCA student at Dr. Subhash University in Junagadh, Gujarat. I enjoy project-based learning and continuously build applications to explore new frameworks, technologies, and engineering approaches.",
+      "I'm Usman Raza, a Final-year BCA student at Dr. Subhash University in Junagadh, Gujarat. I enjoy project-based learning and continuously build applications to explore new frameworks, technologies, and engineering approaches.",
       'My work spans frontend interfaces, backend architecture, AI-powered applications, mobile development, and browser-based productivity tools.',
       'I focus on creating practical, user-centric software while improving my skills through experimentation, implementation, testing, and iteration.',
     ],
@@ -21,7 +21,7 @@ export const profile = {
       { title: 'Refine', text: 'Improving usability, code quality, reliability, responsiveness, and performance.' },
     ],
     facts: [
-      ['Education', 'BCA, Second Year'],
+      ['Education', 'BCA, Final Year'],
       ['Institution', 'Dr. Subhash University'],
       ['Location', 'Junagadh, Gujarat, India'],
       ['Focus', 'Full-stack development and AI applications'],
