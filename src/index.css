@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0A0A0A;
+  --color-bg2: #101114;
+  --color-surface: #16171B;
+  --color-ink: #F5F5F7;
+  --color-sub: #A1A1AA;
+  --color-mute: #71717A;
+  --color-line: rgba(255, 255, 255, 0.10);
+  --color-mint: #8BFFB0;
+  --color-violet: #8B7CFF;
+  --color-ti: #C4C7CE;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { background: var(--color-bg); color: var(--color-ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+:focus-visible { outline: 2px solid var(--color-mint); outline-offset: 3px; border-radius: 6px; }
+
+.eyebrow { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; color: var(--color-mint); }
+.panel { border: 1px solid var(--color-line); border-radius: 1rem; background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.01)); }
+
+.glow { background:
+  radial-gradient(600px circle at 20% 10%, rgba(139,255,176,.08), transparent 60%),
+  radial-gradient(500px circle at 85% 20%, rgba(139,124,255,.07), transparent 60%); }
+.grid-bg { background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 56px 56px; mask-image: radial-gradient(ellipse at 50% 0%, #000 20%, transparent 70%); animation: drift 40s linear infinite; }
+@keyframes drift { to { background-position: 56px 56px; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
