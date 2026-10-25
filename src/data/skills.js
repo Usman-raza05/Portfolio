@@ -1,8 +1,11 @@
-// Lists what is used across projects, not equal depth in each. Prune anything you can't back up.
+// Groups are split by evidence, not skill level: hands-on integration, experiments, and coursework/workshops.
+// No percentages or proficiency scores on purpose.
 export const skills = [
-  { title: 'Frontend', items: ['React.js', 'React Native', 'HTML5', 'CSS3', 'JavaScript', 'Tailwind CSS'] },
-  { title: 'Backend & Frameworks', items: ['Node.js', 'Express.js', 'Python', 'Flask', 'ASP.NET Framework 4.7.2', 'PHP'] },
-  { title: 'Languages', items: ['C', 'C++', 'C#'] },
-  { title: 'Databases & Data', items: ['MongoDB', 'SQL', 'MySQL', 'WebMSSQL'] },
-  { title: 'Tools & Platforms', items: ['Git', 'GitHub', 'Vite', 'REST APIs', 'SQL Server', 'PostgreSQL', 'Prisma ORM', 'Supabase', 'FastAPI', 'Gemini API', 'Mistral API', 'Vercel'] },
+  { title: 'Frontend', items: ['React.js', 'React Native', 'JavaScript / ES6+', 'HTML5', 'CSS3', 'Tailwind CSS', 'React Router', 'Responsive UI', 'State management', 'Form validation'] },
+  { title: 'Backend', items: ['Node.js', 'Express.js', 'Python', 'Flask', 'PHP', 'ASP.NET', 'ASP.NET Web Forms', 'REST APIs'] },
+  { title: 'Databases', items: ['MongoDB', 'MySQL', 'SQL', 'PostgreSQL', 'Supabase', 'Oracle Database'] },
+  { title: 'AI & API Integration · Hands-on', items: ['Google Gemini API', 'Groq API', 'AI Vision API Integration', 'Generative AI Integration', 'LLM Integration', 'Prompt Engineering', 'AI Response Processing', 'API Integration & Error Handling', 'Model Fallback Strategies', 'Multimodal AI Integration', 'JSON-based API Responses'] },
+  { title: 'AI & API Integration · Experimented', items: ['Mistral AI API', 'FastAPI Integration', 'AI-assisted Document Extraction'] },
+  { title: 'AI, IoT & Workshops · Learning', items: ['Machine Learning fundamentals', 'Internet of Things (IoT)', 'Arduino', 'Embedded systems'] },
+  { title: 'Tools & Deployment', items: ['Git', 'GitHub', 'Docker', 'Application deployment', 'Vercel', 'Render', 'AWS', 'phpMyAdmin'] },
 ]

@@ -12,7 +12,7 @@ export default function Experience() {
             <li key={e.org} className="relative">
               <span className="absolute -left-[1.8rem] top-2 h-2.5 w-2.5 rounded-full bg-mint shadow-[0_0_12px_#8BFFB0] sm:-left-[2.8rem]" />
               <Reveal delay={i * 0.08}>
-                <p className="font-mono text-xs text-mute">{e.period}</p>
+                <p className="font-mono text-xs text-mute">{e.period}{e.meta ? ` · ${e.meta}` : ''}</p>
                 <h3 className="mt-2 font-display text-2xl font-semibold">{e.role}</h3>
                 <p className="text-ti">{e.org}</p>
                 {e.tagline && <p className="mt-1 font-mono text-xs text-mint/80">{e.tagline}</p>}

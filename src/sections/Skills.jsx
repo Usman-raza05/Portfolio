@@ -21,7 +21,7 @@ export default function Skills() {
             </Reveal>
           ))}
         </div>
-        <p className="mt-6 text-sm text-mute">These are technologies I’ve used across projects, not a claim of equal depth in each.</p>
+        <p className="mt-6 text-sm text-mute">These are technologies I’ve used across projects, not a claim of equal depth in each. The AI groups are split by evidence: hands-on integration in my projects, experiments and prototypes, and coursework or workshops.</p>
       </div>
     </section>
   )

@@ -1,71 +1,180 @@
-// live/repo: null hides the button. image: null shows a branded placeholder.
-// To add a screenshot, drop a file in /public/projects/ and set image: '/projects/visionlab.png'.
-export const featured = [
+// Central project data. Image paths follow IMAGE-GUIDE.md: save a file at that path and it appears automatically.
+// A null URL hides its button. published: false hides a record until you fill it in.
+const GH = 'https://github.com/Usman-raza05'
+const img = (slug, n = 2) => ({
+  coverImage: `/images/projects/${slug}/cover.webp`,
+  screenshots: Array.from({ length: n }, (_, i) => `/images/projects/${slug}/screenshot-${String(i + 1).padStart(2, '0')}.webp`),
+})
+
+export const projects = [
+  // ---------- Featured ----------
   {
-    id: 'visionlab', name: 'VisionLab', category: 'AI / Computer Vision / Web Application',
-    description: 'An AI-powered image analysis application that generates natural-language descriptions of uploaded images.',
-    highlights: ['Image upload and analysis', 'AI-generated image descriptions', 'Integration with AI model providers'], // add history/gallery/fallback after checking the app
+    id: 'visionlab', title: 'VisionLab', category: 'AI / Computer Vision / Web Application', projectType: 'web', featured: true,
+    shortDescription: 'An AI-powered image analysis app that turns an uploaded image into a structured description.',
+    highlights: [
+      'Image upload with AI-generated descriptions',
+      'Identified objects, colour palette, mood tags and notable details',
+      'Analysis gallery saved in the browser',
+      'Serverless AI handler with multi-provider fallback and retries',
+    ],
     insight: 'Exploring multi-provider AI integration, response handling, and reliable image-analysis workflows.',
-    tags: ['AI', 'Computer Vision'], // TODO: add real stack tags from the repo
-    live: 'https://analyzeimage.vercel.app/', repo: 'https://github.com/Usman-raza05/VisionLab', image: null,
+    technologies: ['React', 'Tailwind CSS', 'Node.js', 'Gemini API', 'Vercel'],
+    status: 'Live', teamOrIndividualContribution: 'Individual project',
+    imageAlt: 'VisionLab AI image analyzer interface',
+    liveUrl: 'https://analyzeimage.vercel.app/', repositoryUrl: `${GH}/VisionLab`, ...img('visionlab'),
   },
   {
-    id: 'chai-ai', name: 'Chai AI', category: 'AI / Mobile Application',
-    description: 'An AI chat application built with React Native, designed to deliver a conversational AI experience on mobile devices.',
-    highlights: ['Mobile interface development', 'Conversational user experience', 'React Native architecture'],
-    tags: ['React Native', 'AI Chat', 'Mobile'],
-    live: null, repo: 'https://github.com/Usman-raza05/Chai-AI', image: null,
+    id: 'chai-ai', title: 'Chai AI', category: 'AI / Mobile Application', projectType: 'mobile', device: 'phone', featured: true,
+    shortDescription: 'An Android AI assistant built with React Native, with a warm, dark “chai” theme.',
+    highlights: [
+      'Multiple chats with saved history through a Node.js, Express and PostgreSQL backend',
+      'Groq-powered answers for brainstorming, recipes and everyday questions',
+      'Markdown replies, code blocks, copy actions and typing indicators',
+    ],
+    technologies: ['React Native', 'Node.js', 'Express', 'PostgreSQL', 'Groq API'],
+    status: 'Android APK · v1.0.1', teamOrIndividualContribution: 'Individual project (app and backend)',
+    imageAlt: 'Chai AI mobile app screens',
+    downloadUrl: `${GH}/Chai-AI/releases/download/v1.0.1/Chai-AI-v1.0.1.apk`, repositoryUrl: `${GH}/Chai-AI`,
+    links: [{ label: 'Backend Source Code', href: `${GH}/Chai-AI-Backend` }],
+    downloadNote: 'Android APK from GitHub Releases. Not on Google Play, so installing it requires allowing installs from unknown sources.',
+    ...img('chai-ai'),
   },
   {
-    id: 'tool-verse', name: 'Tool-Verse', category: 'Developer Tools / Productivity',
-    description: 'A collection of browser-based utilities designed to simplify everyday image and web-related tasks.',
-    highlights: ['Image to PDF', 'Background removal', 'HTML to image'],
-    tags: ['Browser-based', 'Productivity'],
-    live: null /* set when confirmed */, repo: null, image: null,
+    id: 'fellowshift', title: 'FellowShift', category: 'GovTech / EdTech / AI-Assisted Document Verification', projectType: 'web', featured: true,
+    shortDescription: 'A scholarship and fellowship management platform designed around Scheduled Tribe applicants and administrators.',
+    highlights: [
+      'Student portal: scheme discovery, recommendations, applications, documents and notifications',
+      'Admin portal: applications, verification, screening, deficiencies, rules and analytics',
+      'Supabase authentication, Prisma database layer and document storage',
+      'AI document-extraction prototype (FastAPI with Gemini and Mistral), benchmarked in development',
+    ],
+    insight: 'AI assists document verification; human review remains central to administrative decisions.',
+    technologies: ['Next.js', 'TypeScript', 'Prisma', 'Supabase', 'FastAPI', 'Gemini API', 'Mistral API'],
+    status: 'Live deployment · AI verification is a development prototype',
+    teamOrIndividualContribution: 'Collaborative team project. My work: Supabase authentication, Prisma database setup, sign-up and login, document storage, application drafts and the AI verification backend.',
+    imageAlt: 'FellowShift student and admin portal interface',
+    liveUrl: 'https://fellowshift.vercel.app/', repositoryUrl: 'https://github.com/hennyanandwani/MOTA-SCHOLARSHIP',
+    links: [{ label: 'Backend Source Code', href: `${GH}/FellowShift-Backend` }], ...img('fellowshift'),
   },
   {
-    id: 'farmway', name: 'FARMWAY', category: 'AgriTech / Smart India Hackathon 2026',
-    tagline: 'AI-Powered Route to a Fair Farm Price',
-    meta: 'Team Runtime Rebels · Problem Statement SIH26132',
-    description: 'An agricultural technology solution designed around helping farmers access fairer market-price information and make more informed decisions.',
-    highlights: [], // add the farmer problem, workflows and your contributions once confirmed
-    tags: [],       // add the real stack
-    live: 'https://farmarproject.vercel.app/', repo: null, image: null,
+    id: 'farmway', title: 'FARMWAY', category: 'AgriTech / Smart India Hackathon 2026', projectType: 'web', featured: true,
+    tagline: 'AI-Powered Route to a Fair Farm Price', meta: 'Team Runtime Rebels · Problem Statement SIH26132',
+    shortDescription: 'A market-linkage prototype that helps farmers compare buyers by expected net realisation, meaning what actually reaches their pocket.',
+    highlights: [
+      'Nearby price discovery and transparent buyer offers',
+      'Lot matching, logistics and settlement-tracking workflow',
+      'Supabase authentication, with a local demo mode when credentials are absent',
+      'AI guidance is simulated in this prototype',
+    ],
+    technologies: ['React', 'Vite', 'Supabase', 'Three.js'],
+    status: 'Hackathon prototype', teamOrIndividualContribution: 'Team project (Runtime Rebels)',
+    imageAlt: 'FARMWAY market-linkage platform interface',
+    liveUrl: 'https://farmway.vercel.app/', repositoryUrl: `${GH}/Farmar-Project`, ...img('farmway'),
   },
   {
-    id: 'fellowshift', name: 'FellowShift', category: 'GovTech / EdTech / AI-Assisted Document Verification',
-    description: 'An AI-enabled scholarship and fellowship management platform intended to streamline applications, document verification, and tracking for Scheduled Tribe scholarship and fellowship schemes.',
-    highlights: ['Discover schemes → Check eligibility → Apply → Verify documents → Track progress'],
-    insight: 'AI supports document verification; human review remains central to administrative decisions.',
-    tags: ['Next.js', 'Prisma', 'Supabase', 'FastAPI', 'Gemini', 'Mistral'], // confirm which are active
-    live: 'https://fellowshift.vercel.app/', repo: 'https://github.com/hennyanandwani/MOTA-SCHOLARSHIP', image: null,
+    id: 'study-assistant', title: 'Study Assistant', category: 'AI / Education / Document Processing', projectType: 'web', featured: true,
+    shortDescription: 'An AI-powered PDF study tool that summarises documents, generates quizzes and answers questions about their content.',
+    highlights: [
+      'PDF summaries',
+      'Multiple-choice quizzes with answers and short explanations',
+      'Chat with your document',
+      'Scanned and image-based PDFs handled by rendering pages for a vision-capable model',
+    ],
+    technologies: ['Python', 'Flask', 'PyMuPDF', 'Groq API'],
+    status: 'Live', teamOrIndividualContribution: 'Collaborative project',
+    imageAlt: 'Study Assistant PDF study tool interface',
+    liveUrl: 'https://study-assistent-m336.onrender.com/', repositoryUrl: `${GH}/STUDY-Assistent`, ...img('study-assistant'),
   },
   {
-    id: 'study-assistant', name: 'Study Assistant', category: 'AI / Education / Document Processing',
-    description: 'An AI-powered study application designed to work with learning materials and provide an AI-assisted study experience.',
-    highlights: ['PDF processing', 'AI-assisted study workflow'],
-    tags: ['Python', 'Flask', 'PyMuPDF', 'Groq API'],
-    live: null, repo: null, image: null,
+    id: 'toolverse', title: 'Tool-Verse', category: 'Web Utilities / Productivity', projectType: 'web', featured: false,
+    shortDescription: 'A suite of browser-based utility tools for everyday image and web tasks.',
+    highlights: ['Image to PDF', 'Background remover', 'HTML to image', 'Additional small utilities'],
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'jsPDF', 'html2canvas', 'remove.bg API'],
+    status: 'Live', teamOrIndividualContribution: 'Independent project',
+    imageAlt: 'Tool-Verse utility tools home page',
+    liveUrl: 'https://toolverse.rf.gd/', repositoryUrl: `${GH}/Tool-Verse`, ...img('toolverse'),
+  },
+
+  // ---------- More projects ----------
+  {
+    id: 'get-me-a-chai', title: 'Get-Me-A-Chai', category: 'Full-Stack · Crowdfunding Platform', projectType: 'web', featured: false,
+    shortDescription: 'A crowdfunding platform built with Next.js and MongoDB, with Razorpay payment integration.',
+    technologies: ['Next.js', 'MongoDB', 'Razorpay'], period: 'Feb 2026 – Present',
+    liveUrl: null, repositoryUrl: null, ...img('get-me-a-chai', 1),
   },
   {
-    id: 'food-management', name: 'Food Management System', category: 'Full-Stack Development / Database Applications',
-    description: 'A full-stack food management web application developed with ASP.NET Framework 4.7.2 and integrated with a remote SQL database.',
-    highlights: [], // add real features after checking the code
-    tags: ['ASP.NET 4.7.2', 'SQL'],
-    live: null, repo: null, image: null,
+    id: 'passop', title: 'PassOP', category: 'Full-Stack · Password Manager', projectType: 'web', featured: false,
+    shortDescription: 'A MERN-stack password manager focused on password management and state handling.',
+    technologies: ['MongoDB', 'Express', 'React', 'Node.js'], period: 'Feb – Mar 2026',
+    liveUrl: null, repositoryUrl: null, ...img('passop', 1),
   },
   {
-    id: 'learn-ai', name: 'Learn AI', category: 'AI Education / Digital Content',
-    tagline: 'Practical AI Tutorials • AI Tools • Automation',
-    description: 'An educational brand focused on helping people explore AI tools, prompting techniques, and productivity workflows.',
-    highlights: [], tags: ['Content', 'Education'],
-    live: 'https://learnai.wuaze.com/', repo: null, image: null,
-    links: [{ label: 'Instagram', href: 'https://www.instagram.com/learnaitrend/' }],
+    id: 'food-management', title: 'Food Management System', category: 'ASP.NET Web Application', projectType: 'web', device: 'desktop', featured: false,
+    shortDescription: 'A web application for managing food categories, menu items and orders, with a dashboard overview.',
+    technologies: ['ASP.NET Web Forms', 'SQL Database'],
+    liveUrl: 'https://food-management.runasp.net/', repositoryUrl: null, ...img('food-management', 1),
+  },
+  {
+    id: 'grocery-management', title: 'Grocery Store Management System', category: 'Desktop Application', projectType: 'desktop', device: 'desktop', featured: false,
+    shortDescription: 'A grocery store management system built with C# and .NET.',
+    technologies: ['C#', '.NET'], period: 'Started Oct 2025',
+    liveUrl: null, repositoryUrl: null, ...img('grocery-management', 1),
+  },
+  {
+    // Reusable slot for the second C#/ASP.NET desktop project. Fill it in, then set published: true.
+    id: 'desktop-aspnet', title: 'Desktop C#/ASP.NET Project', category: 'Desktop Application', projectType: 'desktop', device: 'desktop', featured: false, published: false,
+    shortDescription: '', technologies: [], liveUrl: null, repositoryUrl: null, ...img('desktop-aspnet', 1),
+  },
+  {
+    id: 'spotify-clone', title: 'Spotify Clone', category: 'Frontend Project', projectType: 'web', featured: false,
+    shortDescription: 'A frontend clone of the Spotify web player interface.',
+    technologies: ['HTML5', 'CSS3', 'JavaScript'], period: 'Feb – Mar 2025', status: 'Role: Frontend Developer',
+    liveUrl: null, repositoryUrl: null, ...img('spotify-clone', 1),
+  },
+  {
+    id: 'arduino-motion', title: 'AI-Based Motion Recognition', category: 'Arduino & AI Workshop Project', projectType: 'workshop', featured: false,
+    shortDescription: 'Workshop project: collecting motion data for circular, up-and-down and idle movements, then training and testing an AI model.',
+    technologies: ['Arduino Uno', 'IoT', 'Machine Learning basics'], period: 'Oct 2026', status: 'Workshop project',
+    liveUrl: null, repositoryUrl: null, ...img('arduino-motion', 1),
+  },
+  // {
+  //   id: 'mychat', title: 'MyChat', category: 'Mobile Application', projectType: 'mobile', device: 'phone', featured: true,
+  //   shortDescription: 'A realtime one-to-one Android chat app built with React Native CLI and Supabase, with push notifications through Firebase Cloud Messaging.',
+  //   technologies: ['React Native', 'Supabase', 'Firebase Cloud Messaging'],
+  //   downloadUrl: 'https://github.com/Usman-raza05/MyChat/releases/download/v1.0.1/MyChat.apk', repositoryUrl: `${GH}/MyChat`, ...img('mychat', 1),
+  // },
+  
+{
+  id: 'mychat',
+  title: 'MyChat',
+  category: 'Mobile Application',
+  projectType: 'mobile',
+  device: 'phone',
+  featured: true,
+  shortDescription: 'A realtime one-to-one Android chat app built with React Native CLI and Supabase, with push notifications through Firebase Cloud Messaging.',
+  highlights: [
+    'Realtime one-to-one messaging',
+    'Supabase authentication and backend',
+    'Push notifications with Firebase Cloud Messaging',
+    'Android APK download'
+  ],
+  technologies: ['React Native', 'Supabase', 'Firebase Cloud Messaging'],
+  status: 'Live',
+  teamOrIndividualContribution: 'Independent project',
+  imageAlt: 'MyChat mobile chat application interface',
+  downloadUrl: 'https://github.com/Usman-raza05/MyChat/releases/download/v1.0.1/MyChat.apk',
+  // liveUrl: 'https://github.com/Usman-raza05/MyChat/releases/download/v1.0.1/MyChat.apk',
+  repositoryUrl: `${GH}/MyChat`,
+  ...img('mychat', 1),
+},
+  {
+    id: 'learn-supabase', title: 'Supabase Learning App', category: 'Learning Project', projectType: 'web', featured: false,
+    shortDescription: 'A learning project covering Supabase authentication, Google OAuth, PostgreSQL CRUD and Row Level Security.',
+    technologies: ['React', 'Vite', 'Supabase'], status: 'Learning project',
+    liveUrl: 'https://learnsupabase.vercel.app/', repositoryUrl: `${GH}/learn-supabase`, ...img('learn-supabase', 1),
   },
 ]
 
-export const additional = [
-  { name: 'Get-me-a-chai', category: 'Web Application', description: 'Details coming soon.', tags: [], live: null, repo: null },
-  { name: 'MERN Stack Password Manager', category: 'Full-Stack Application', description: 'A password manager built on the MERN stack.', tags: ['MongoDB', 'Express', 'React', 'Node.js'], live: null, repo: null },
-  { name: 'Grocery Store Management System', category: 'Desktop/Web Application', description: 'A grocery store management system built with C# Web Forms.', tags: ['C#', 'Web Forms'], live: null, repo: null },
-]
+const visible = projects.filter((p) => p.published !== false)
+export const featured = visible.filter((p) => p.featured)
+export const additional = visible.filter((p) => !p.featured)

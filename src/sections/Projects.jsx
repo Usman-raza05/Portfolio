@@ -15,7 +15,7 @@ export default function Projects() {
         </div>
         <h3 className="mt-28 font-display text-2xl font-semibold">More work</h3>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {additional.map((p) => <ProjectCard key={p.name} p={p} />)}
+          {additional.map((p) => <ProjectCard key={p.id} p={p} />)}
         </div>
       </div>
     </section>

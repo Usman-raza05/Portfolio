@@ -1,5 +1,5 @@
 import { ArrowUp } from 'lucide-react'
-import { FaGithub, FaInstagram } from 'react-icons/fa'
+import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
 import { profile } from '../data/profile'
 
 export default function Footer() {
@@ -14,6 +14,7 @@ export default function Footer() {
         <div className="flex flex-wrap items-center gap-6 text-sm">
           <a className={link} href={profile.github} target="_blank" rel="noopener noreferrer"><FaGithub /> GitHub</a>
           <a className={link} href={profile.instagram} target="_blank" rel="noopener noreferrer"><FaInstagram /> Instagram</a>
+          {profile.linkedin && <a className={link} href={profile.linkedin} target="_blank" rel="noopener noreferrer"><FaLinkedin /> LinkedIn</a>}
           <a className={link} href={`mailto:${profile.email}`}>Email</a>
           <a className={link} href="#home" aria-label="Back to top"><ArrowUp size={16} /> Top</a>
         </div>
